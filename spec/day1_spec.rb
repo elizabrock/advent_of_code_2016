@@ -84,6 +84,26 @@ describe Day1 do
     end
   end
 
+  describe "easter_bunny_hq_location" do
+    it "scenario 1" do
+      expected = [4, 0]
+      actual = Day1.new("R8, R4, R4, R8").easter_bunny_hq_location
+      actual.must_equal expected
+    end
+
+    it "scenario 2" do
+      expected = [2, -2]
+      actual = Day1.new("R2, R2, R2, L1, L2, L2").easter_bunny_hq_location
+      actual.must_equal expected
+    end
+
+    it "scenario 3" do
+      expected = [2, -2]
+      actual = Day1.new("R2, R2, R2, L0, L3").easter_bunny_hq_location
+      actual.must_equal expected
+    end
+  end
+
   describe "facing" do
     it "scenario 0" do
       expected = 'e'
