@@ -92,7 +92,8 @@ describe Day1 do
     end
 
     it "scenario 2" do
-      expected = [2, -2]
+      # This is subject to interpretation but could as easily have been [2, -2]
+      expected = [2, -1]
       actual = Day1.new("R2, R2, R2, L1, L2, L2").easter_bunny_hq_location
       actual.must_equal expected
     end
@@ -132,6 +133,28 @@ describe Day1 do
     it "scenario 4" do
       expected = 'e'
       actual = Day1.new("L5, R5, R3").facing
+      actual.must_equal expected
+    end
+  end
+
+  describe "locations_traversed" do
+    it "scenario 2" do
+      expected = [ # start by facing North
+                   [0, 0],
+                   # R2: rotate to East, go 2
+                   [1, 0], [2, 0],
+                   # R2: rotate to South, go 2
+                   [2, -1], [2, -2],
+                   # R2: rotate to West, go 2
+                   [1, -2], [0, -2],
+                   # L1: rotate to South, go 1
+                   [0, -3],
+                   # L2: rotate to East, go 2
+                   [1, -3], [2, -3],
+                   # L2: rotate to North, go 2
+                   [2, -2], [2, -1]
+                  ]
+      actual = Day1.new("R2, R2, R2, L1, L2, L2").locations_traversed
       actual.must_equal expected
     end
   end
